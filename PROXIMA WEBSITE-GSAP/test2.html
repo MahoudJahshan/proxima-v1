@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .blurred-section {
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.401);
+    }
+
+    /* Dropdown animation */
+    .dropdown-enter {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    .dropdown-active {
+      transform: translateY(0);
+      opacity: 1;
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body class="border-orange-500 text-white bg-orange-300">
+  <nav class="fixed top-0 left-0 w-full z-10 ">
+    <div class="container mx-auto px-4 flex justify-between items-center py-3">
+      <!-- Logo -->
+      <div class="text-xl font-bold">
+        <a href="#" class="text-white">planhat</a>
+      </div>
+
+      <!-- Navigation Links for Desktop -->
+      <div class="hidden md:flex space-x-6 blurred-section px-6 py-2 rounded-full">
+        <a href="#" class="text-gray-300 hover:text-white">Home</a>
+        <a href="#" class="text-gray-300 hover:text-white">Solutions</a>
+        <a href="#" class="text-gray-300 hover:text-white">Platform</a>
+        <a href="#" class="text-gray-300 hover:text-white">Customers</a>
+        <a href="#" class="text-gray-300 hover:text-white">Pricing</a>
+        <a href="#" class="text-gray-300 hover:text-white">Explore</a>
+      </div>
+
+      <!-- Buttons for Desktop -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="#" class="text-gray-300 hover:text-white">Log in</a>
+        <a href="#" class="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700">Request a demo</a>
+      </div>
+
+      <!-- Hamburger Menu (Mobile) -->
+      <button
+        id="menu-toggle"
+        class="md:hidden text-white focus:outline-none"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navigation Links for Mobile -->
+    <div
+      id="nav-links"
+      class="hidden md:hidden space-y-4 px-6 py-4 blurred-section absolute top-16 right-0 w-2/3 bg-gray-900 rounded-lg"
+    >
+      <a href="#" class="block text-gray-300 hover:text-white">Home</a>
+      <a href="#" class="block text-gray-300 hover:text-white">Solutions</a>
+      <a href="#" class="block text-gray-300 hover:text-white">Platform</a>
+      <a href="#" class="block text-gray-300 hover:text-white">Customers</a>
+      <a href="#" class="block text-gray-300 hover:text-white">Pricing</a>
+      <a href="#" class="block text-gray-300 hover:text-white">Explore</a>
+      <a href="#" class="block text-gray-300 hover:text-white">Log in</a>
+    </div>
+  </nav>
+
+
+
+
+
+
+
+  
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    // Toggle visibility and add animation
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("hidden");
+      if (!navLinks.classList.contains("hidden")) {
+        navLinks.classList.add("dropdown-enter");
+        setTimeout(() => {
+          navLinks.classList.remove("dropdown-enter");
+          navLinks.classList.add("dropdown-active");
+        }, 10); // Trigger animation
+      } else {
+        navLinks.classList.remove("dropdown-active");
+      }
+    });
+  </script>
+</body>
+</html>
